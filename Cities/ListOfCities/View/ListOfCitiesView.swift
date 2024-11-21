@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListOfCitiesView: View {
     
-    @StateObject private var citiesVM = ListOfCitiesViewModel()
+    private var citiesVM = ListOfCitiesViewModel()
     @State private var initialCitiesLoaded: [CitiesInfo] = []
     @State private var isLoading: Bool = false
     @State private var searchBar = ""
@@ -27,9 +27,16 @@ struct ListOfCitiesView: View {
                 LazyVStack(alignment: .leading) {
                     ForEach(searchBar.isEmpty ? initialCitiesLoaded : filteredCities, id: \.name) { city in
                         HStack(spacing: deviceWidth / 20) {
-                            NavigationLink("\(city.name), \(city.country)\nLon: \(city.coord["lon"]!), Lat: \(city.coord["lat"]!)", destination: ListOfCitiesMapView(listResult:city)
-                            )
-                            .tint(.black)
+                            NavigationLink(destination: CityMapView(listResult: city)) {
+                                VStack(alignment: .leading) {
+                                    Text("\(city.name), \(city.country)")
+                                        .foregroundStyle(.primary)
+                                        .bold()
+                                        .tint(Color.indigo)
+                                    Text("Lon: \(city.coord["lon"]!), Lat: \(city.coord["lat"]!)")
+                                        .tint(Color.indigo)
+                                }
+                            }
                             .frame(minWidth: deviceWidth / 1.5)
                             .onAppear {
                                 loadMoreContentIfNeeded(city: city)
@@ -40,17 +47,17 @@ struct ListOfCitiesView: View {
                             } label: {
                                 Image(systemName: "info.circle.fill")
                                     .resizable()
+                                    .tint(Color.purple)
                                     .frame(width: 25, height: 25)
                                     .padding(.leading, 10)
                             }
                             
                             Button {
-                                // logica fav
+                                // logica fav.
                             } label: {
                                 Image(systemName: "star")
                                     .foregroundColor(.gray)
                             }
-                            .buttonStyle(PlainButtonStyle())
                             .padding(.leading, 10)
                             
                         }
