@@ -12,6 +12,7 @@ struct ListOfCitiesView: View {
     private var citiesVM = ListOfCitiesViewModel()
     @State private var initialCitiesLoaded: [CitiesInfo] = []
     @State private var isLoading: Bool = false
+    @State private var isFavorite: Bool = false
     @State private var searchBar = ""
     @State private var isSheetViewPresented = false
     private var deviceWidth = UIScreen.main.bounds.width
@@ -53,10 +54,10 @@ struct ListOfCitiesView: View {
                             }
                             
                             Button {
-                                // logica fav.
+                                isFavorite.toggle()
                             } label: {
-                                Image(systemName: "star")
-                                    .foregroundColor(.gray)
+                                Image(systemName: isFavorite ? "star.fill" : "star")
+                                    .foregroundColor(isFavorite ? .yellow : .gray)
                             }
                             .padding(.leading, 10)
                             
