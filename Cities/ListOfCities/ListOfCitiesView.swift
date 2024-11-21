@@ -16,14 +16,20 @@ struct ListOfCitiesView: View {
     @State private var isSheetViewPresented = false
     private var deviceWidth = UIScreen.main.bounds.width
     
+    var filteredCities: [CitiesInfo] {
+        guard !searchBar.isEmpty else { return citiesVM.listResults }
+        return citiesVM.listResults.filter { $0.name.lowercased().hasPrefix(searchBar.lowercased()) }
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(alignment: .leading) {
-                    ForEach(initialCitiesLoaded, id: \.name) { city in
-                        HStack(spacing: deviceWidth / 8) {
+                    ForEach(searchBar.isEmpty ? initialCitiesLoaded : filteredCities, id: \.name) { city in
+                        HStack(spacing: deviceWidth / 20) {
                             NavigationLink("\(city.name), \(city.country)\nLon: \(city.coord["lon"]!), Lat: \(city.coord["lat"]!)", destination: ListOfCitiesMapView(listResult:city)
                             )
+                            .tint(.black)
                             .frame(minWidth: deviceWidth / 1.5)
                             .onAppear {
                                 loadMoreContentIfNeeded(city: city)
@@ -37,6 +43,14 @@ struct ListOfCitiesView: View {
                                     .frame(width: 25, height: 25)
                                     .padding(.leading, 10)
                             }
+                            
+                            Button {
+                                // logica fav
+                            } label: {
+                                Image(systemName: "star")
+                                    .foregroundColor(.gray)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                             .padding(.leading, 10)
                             
                         }
@@ -66,11 +80,6 @@ struct ListOfCitiesView: View {
         
     }
     
-    var filteredCities: [CitiesInfo] {
-        guard !searchBar.isEmpty else { return citiesVM.listResults }
-        return citiesVM.listResults.filter { $0.name.lowercased().hasPrefix(searchBar.lowercased()) }
-    }
-    
     private func loadInitialCities() {
         let initialBatch = Array(citiesVM.listResults.prefix(20))
         initialCitiesLoaded.append(contentsOf: initialBatch)
@@ -86,7 +95,7 @@ struct ListOfCitiesView: View {
             isLoading = true
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-
+                
                 let nextBatchStart = initialCitiesLoaded.count
                 let nextBatchEnd = min(initialCitiesLoaded.count + 20, filteredCities.count)
                 let nextBatch = filteredCities[nextBatchStart..<nextBatchEnd]
