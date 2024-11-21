@@ -74,7 +74,7 @@ struct ListOfCitiesView: View {
             .searchable(text: $searchBar, prompt: "filter")
         }
         .task {
-            await citiesVM.fetchData()
+            await citiesVM.fetchData(from: citiesVM.url!)
             loadInitialCities()
         }
         
