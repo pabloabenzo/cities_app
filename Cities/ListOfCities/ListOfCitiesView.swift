@@ -9,16 +9,12 @@ import SwiftUI
 
 struct ListOfCitiesView: View {
     
-    @State var listResults = [CitiesInfo]()
+    @StateObject private var citiesVM = ListOfCitiesViewModel()
     @State private var initialCitiesLoaded: [CitiesInfo] = []
-    @State private var searchBar = ""
     @State private var isLoading: Bool = false
+    @State private var searchBar = ""
+    @State private var isSheetViewPresented = false
     private var deviceWidth = UIScreen.main.bounds.width
-    
-    var filteredCities: [CitiesInfo] {
-        guard !searchBar.isEmpty else { return listResults }
-        return listResults.filter { $0.name.lowercased().hasPrefix(searchBar.lowercased()) }
-    }
     
     var body: some View {
         NavigationStack {
@@ -34,7 +30,7 @@ struct ListOfCitiesView: View {
                             }
                             
                             Button {
-                                print("hola")
+                                isSheetViewPresented = true
                             } label: {
                                 Image(systemName: "info.circle.fill")
                                     .resizable()
@@ -47,17 +43,19 @@ struct ListOfCitiesView: View {
                         .padding(.bottom, 20).padding(.leading, 10)
                     }
                 }
-                
+                .sheet(isPresented: $isSheetViewPresented) {
+                    InfoSheetView()
+                        .presentationDetents([.medium])
+                }
             }
             .navigationTitle("Cities of world")
             .navigationBarTitleDisplayMode(.large)
             .searchable(text: $searchBar, prompt: "filter")
         }
         .task {
-            await fetchData()
+            await citiesVM.fetchData()
+            loadInitialCities()
         }
-        
-        
         
         if filteredCities.isEmpty {
             Text("No hay resultados.")
@@ -68,18 +66,23 @@ struct ListOfCitiesView: View {
         
     }
     
+    var filteredCities: [CitiesInfo] {
+        guard !searchBar.isEmpty else { return citiesVM.listResults }
+        return citiesVM.listResults.filter { $0.name.lowercased().hasPrefix(searchBar.lowercased()) }
+    }
+    
     private func loadInitialCities() {
-        let initialBatch = Array(listResults.prefix(20))
+        let initialBatch = Array(citiesVM.listResults.prefix(20))
         initialCitiesLoaded.append(contentsOf: initialBatch)
     }
-
+    
     private func loadMoreContentIfNeeded(city: CitiesInfo) {
         
         guard let lastCity = initialCitiesLoaded.last, city == lastCity else {
             return
         }
         
-        if !isLoading && initialCitiesLoaded.count < listResults.count {
+        if !isLoading && initialCitiesLoaded.count < citiesVM.listResults.count {
             isLoading = true
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -91,23 +94,6 @@ struct ListOfCitiesView: View {
                 
                 isLoading = false
             }
-        }
-    }
-    
-    func fetchData() async {
-        guard let url = URL(string: "https://gist.githubusercontent.com/hernan-uala/dce8843a8edbe0b0018b32e137bc2b3a/raw/0996accf70cb0ca0e16f9a99e0ee185fafca7af1/cities.json") else { return }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            
-            if let decodedResponse = try? JSONDecoder().decode([CitiesInfo].self, from: data) {
-                let results = decodedResponse
-                listResults = results.sorted { $0.name < $1.name }
-                loadInitialCities()
-                
-            }
-        } catch {
-            print("data inválida")
         }
     }
 
