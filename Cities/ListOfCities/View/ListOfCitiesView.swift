@@ -87,13 +87,17 @@ struct ListOfCitiesView: View {
             loadInitialCities()
         }
         
-        if filteredCities.isEmpty {
+        if filteredCities.isEmpty && !searchBar.isEmpty {
             Text("No hay resultados.")
                 .font(.headline)
                 .foregroundColor(.gray)
-                .padding(.bottom, UIScreen.main.bounds.height / 3)
+                .padding(.bottom, UIScreen.main.bounds.height / 2)
+        } else if filteredCities.isEmpty {
+            ProgressView()
+                .progressViewStyle(CircularProgressViewStyle())
+                .scaleEffect(1.5)
+                .padding(.bottom, UIScreen.main.bounds.height / 2)
         }
-        
     }
     
     var filteredSearch: [CitiesInfo]  {
