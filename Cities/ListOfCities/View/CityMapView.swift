@@ -14,7 +14,7 @@ struct CityMapView: View {
     
     var body: some View {
         VStack {
-            MapView(latitude: listResult.coord["lat"]!, longitude: listResult.coord["lon"]!)
+            MapView(latitude: listResult.coord.lat, longitude: listResult.coord.lon)
                 .ignoresSafeArea(.container, edges: .bottom)
         }
         .toolbar {

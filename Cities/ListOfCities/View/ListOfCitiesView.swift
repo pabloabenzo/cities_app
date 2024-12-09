@@ -30,7 +30,7 @@ struct ListOfCitiesView: View {
                                             .foregroundStyle(.primary)
                                             .bold()
                                             .tint(Color.indigo)
-                                        Text("Lon: \(city.coord["lon"]!), Lat: \(city.coord["lat"]!)")
+                                        Text("Lon: \(city.coord.lon), Lat: \(city.coord.lat)")
                                             .tint(Color.indigo)
                                     }
                                     .padding(.leading, 10)
