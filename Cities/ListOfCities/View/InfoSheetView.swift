@@ -13,7 +13,7 @@ struct InfoSheetView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Aqui encontrarás informacion de la ciudad seleccionada en cuanto la misma se agregue en el JSON recibido.")
+                Text("Here you'll find information about the selected city as soon as it's added to the received JSON.")
                     .padding()
                 
             }

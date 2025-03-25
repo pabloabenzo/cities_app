@@ -28,7 +28,7 @@ final class CitiesTests: XCTestCase {
     }
     
     func testFetchCitiesData() {
-        let expectation = self.expectation(description: "Fetch cities data")
+        let expectation = self.expectation(description: "Fetch cities data.")
         apiClient.fetchCitiesData { result in
             switch result {
             case .success(let cities):

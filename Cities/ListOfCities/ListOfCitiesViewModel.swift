@@ -30,7 +30,7 @@ class ListOfCitiesViewModel {
                 
             }
         } catch {
-            print("data inválida")
+            print("Invalid data.")
         }
     }
     
