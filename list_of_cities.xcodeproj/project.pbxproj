@@ -7,62 +7,57 @@
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
-		DD8A368B2CEDC7A400CA9B15 /* PBXContainerItemProxy */ = {
+		DD92475E2D5C1851003F0791 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DD8A36722CEDC7A200CA9B15 /* Project object */;
+			containerPortal = DD9247442D5C184F003F0791 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DD8A36792CEDC7A200CA9B15;
-			remoteInfo = Cities;
+			remoteGlobalIDString = DD92474B2D5C184F003F0791;
+			remoteInfo = list_of_cities;
 		};
-		DD8A36952CEDC7A400CA9B15 /* PBXContainerItemProxy */ = {
+		DD9247682D5C1851003F0791 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = DD8A36722CEDC7A200CA9B15 /* Project object */;
+			containerPortal = DD9247442D5C184F003F0791 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = DD8A36792CEDC7A200CA9B15;
-			remoteInfo = Cities;
+			remoteGlobalIDString = DD92474B2D5C184F003F0791;
+			remoteInfo = list_of_cities;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DD8A367A2CEDC7A200CA9B15 /* Cities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cities.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD8A368A2CEDC7A400CA9B15 /* CitiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CitiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD8A36942CEDC7A400CA9B15 /* CitiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CitiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD92474C2D5C184F003F0791 /* list_of_cities.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = list_of_cities.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD92475D2D5C1851003F0791 /* list_of_citiesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = list_of_citiesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD9247672D5C1851003F0791 /* list_of_citiesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = list_of_citiesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		DD8A367C2CEDC7A200CA9B15 /* Cities */ = {
+		DD92474E2D5C184F003F0791 /* list_of_cities */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Cities;
+			path = list_of_cities;
 			sourceTree = "<group>";
 		};
-		DD8A368D2CEDC7A400CA9B15 /* CitiesTests */ = {
+		DD9247602D5C1851003F0791 /* list_of_citiesTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CitiesTests;
-			sourceTree = "<group>";
-		};
-		DD8A36972CEDC7A400CA9B15 /* CitiesUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = CitiesUITests;
+			path = list_of_citiesTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		DD8A36772CEDC7A200CA9B15 /* Frameworks */ = {
+		DD9247492D5C184F003F0791 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD8A36872CEDC7A400CA9B15 /* Frameworks */ = {
+		DD92475A2D5C1851003F0791 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD8A36912CEDC7A400CA9B15 /* Frameworks */ = {
+		DD9247642D5C1851003F0791 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,22 +67,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DD8A36712CEDC7A200CA9B15 = {
+		DD9247432D5C184F003F0791 = {
 			isa = PBXGroup;
 			children = (
-				DD8A367C2CEDC7A200CA9B15 /* Cities */,
-				DD8A368D2CEDC7A400CA9B15 /* CitiesTests */,
-				DD8A36972CEDC7A400CA9B15 /* CitiesUITests */,
-				DD8A367B2CEDC7A200CA9B15 /* Products */,
+				DD92474E2D5C184F003F0791 /* list_of_cities */,
+				DD9247602D5C1851003F0791 /* list_of_citiesTests */,
+				DD92474D2D5C184F003F0791 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		DD8A367B2CEDC7A200CA9B15 /* Products */ = {
+		DD92474D2D5C184F003F0791 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DD8A367A2CEDC7A200CA9B15 /* Cities.app */,
-				DD8A368A2CEDC7A400CA9B15 /* CitiesTests.xctest */,
-				DD8A36942CEDC7A400CA9B15 /* CitiesUITests.xctest */,
+				DD92474C2D5C184F003F0791 /* list_of_cities.app */,
+				DD92475D2D5C1851003F0791 /* list_of_citiesTests.xctest */,
+				DD9247672D5C1851003F0791 /* list_of_citiesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,134 +89,131 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DD8A36792CEDC7A200CA9B15 /* Cities */ = {
+		DD92474B2D5C184F003F0791 /* list_of_cities */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD8A369E2CEDC7A400CA9B15 /* Build configuration list for PBXNativeTarget "Cities" */;
+			buildConfigurationList = DD9247712D5C1851003F0791 /* Build configuration list for PBXNativeTarget "list_of_cities" */;
 			buildPhases = (
-				DD8A36762CEDC7A200CA9B15 /* Sources */,
-				DD8A36772CEDC7A200CA9B15 /* Frameworks */,
-				DD8A36782CEDC7A200CA9B15 /* Resources */,
+				DD9247482D5C184F003F0791 /* Sources */,
+				DD9247492D5C184F003F0791 /* Frameworks */,
+				DD92474A2D5C184F003F0791 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				DD8A367C2CEDC7A200CA9B15 /* Cities */,
+				DD92474E2D5C184F003F0791 /* list_of_cities */,
 			);
-			name = Cities;
+			name = list_of_cities;
 			packageProductDependencies = (
 			);
-			productName = Cities;
-			productReference = DD8A367A2CEDC7A200CA9B15 /* Cities.app */;
+			productName = list_of_cities;
+			productReference = DD92474C2D5C184F003F0791 /* list_of_cities.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DD8A36892CEDC7A400CA9B15 /* CitiesTests */ = {
+		DD92475C2D5C1851003F0791 /* list_of_citiesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD8A36A12CEDC7A400CA9B15 /* Build configuration list for PBXNativeTarget "CitiesTests" */;
+			buildConfigurationList = DD9247742D5C1851003F0791 /* Build configuration list for PBXNativeTarget "list_of_citiesTests" */;
 			buildPhases = (
-				DD8A36862CEDC7A400CA9B15 /* Sources */,
-				DD8A36872CEDC7A400CA9B15 /* Frameworks */,
-				DD8A36882CEDC7A400CA9B15 /* Resources */,
+				DD9247592D5C1851003F0791 /* Sources */,
+				DD92475A2D5C1851003F0791 /* Frameworks */,
+				DD92475B2D5C1851003F0791 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DD8A368C2CEDC7A400CA9B15 /* PBXTargetDependency */,
+				DD92475F2D5C1851003F0791 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				DD8A368D2CEDC7A400CA9B15 /* CitiesTests */,
+				DD9247602D5C1851003F0791 /* list_of_citiesTests */,
 			);
-			name = CitiesTests;
+			name = list_of_citiesTests;
 			packageProductDependencies = (
 			);
-			productName = CitiesTests;
-			productReference = DD8A368A2CEDC7A400CA9B15 /* CitiesTests.xctest */;
+			productName = list_of_citiesTests;
+			productReference = DD92475D2D5C1851003F0791 /* list_of_citiesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DD8A36932CEDC7A400CA9B15 /* CitiesUITests */ = {
+		DD9247662D5C1851003F0791 /* list_of_citiesUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD8A36A42CEDC7A400CA9B15 /* Build configuration list for PBXNativeTarget "CitiesUITests" */;
+			buildConfigurationList = DD9247772D5C1851003F0791 /* Build configuration list for PBXNativeTarget "list_of_citiesUITests" */;
 			buildPhases = (
-				DD8A36902CEDC7A400CA9B15 /* Sources */,
-				DD8A36912CEDC7A400CA9B15 /* Frameworks */,
-				DD8A36922CEDC7A400CA9B15 /* Resources */,
+				DD9247632D5C1851003F0791 /* Sources */,
+				DD9247642D5C1851003F0791 /* Frameworks */,
+				DD9247652D5C1851003F0791 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				DD8A36962CEDC7A400CA9B15 /* PBXTargetDependency */,
+				DD9247692D5C1851003F0791 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				DD8A36972CEDC7A400CA9B15 /* CitiesUITests */,
-			);
-			name = CitiesUITests;
+			name = list_of_citiesUITests;
 			packageProductDependencies = (
 			);
-			productName = CitiesUITests;
-			productReference = DD8A36942CEDC7A400CA9B15 /* CitiesUITests.xctest */;
+			productName = list_of_citiesUITests;
+			productReference = DD9247672D5C1851003F0791 /* list_of_citiesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		DD8A36722CEDC7A200CA9B15 /* Project object */ = {
+		DD9247442D5C184F003F0791 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1610;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					DD8A36792CEDC7A200CA9B15 = {
-						CreatedOnToolsVersion = 16.1;
+					DD92474B2D5C184F003F0791 = {
+						CreatedOnToolsVersion = 16.2;
 					};
-					DD8A36892CEDC7A400CA9B15 = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = DD8A36792CEDC7A200CA9B15;
+					DD92475C2D5C1851003F0791 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = DD92474B2D5C184F003F0791;
 					};
-					DD8A36932CEDC7A400CA9B15 = {
-						CreatedOnToolsVersion = 16.1;
-						TestTargetID = DD8A36792CEDC7A200CA9B15;
+					DD9247662D5C1851003F0791 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = DD92474B2D5C184F003F0791;
 					};
 				};
 			};
-			buildConfigurationList = DD8A36752CEDC7A200CA9B15 /* Build configuration list for PBXProject "Cities" */;
+			buildConfigurationList = DD9247472D5C184F003F0791 /* Build configuration list for PBXProject "list_of_cities" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = DD8A36712CEDC7A200CA9B15;
+			mainGroup = DD9247432D5C184F003F0791;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = DD8A367B2CEDC7A200CA9B15 /* Products */;
+			productRefGroup = DD92474D2D5C184F003F0791 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DD8A36792CEDC7A200CA9B15 /* Cities */,
-				DD8A36892CEDC7A400CA9B15 /* CitiesTests */,
-				DD8A36932CEDC7A400CA9B15 /* CitiesUITests */,
+				DD92474B2D5C184F003F0791 /* list_of_cities */,
+				DD92475C2D5C1851003F0791 /* list_of_citiesTests */,
+				DD9247662D5C1851003F0791 /* list_of_citiesUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		DD8A36782CEDC7A200CA9B15 /* Resources */ = {
+		DD92474A2D5C184F003F0791 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD8A36882CEDC7A400CA9B15 /* Resources */ = {
+		DD92475B2D5C1851003F0791 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD8A36922CEDC7A400CA9B15 /* Resources */ = {
+		DD9247652D5C1851003F0791 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -232,21 +223,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		DD8A36762CEDC7A200CA9B15 /* Sources */ = {
+		DD9247482D5C184F003F0791 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD8A36862CEDC7A400CA9B15 /* Sources */ = {
+		DD9247592D5C1851003F0791 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DD8A36902CEDC7A400CA9B15 /* Sources */ = {
+		DD9247632D5C1851003F0791 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -256,20 +247,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DD8A368C2CEDC7A400CA9B15 /* PBXTargetDependency */ = {
+		DD92475F2D5C1851003F0791 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DD8A36792CEDC7A200CA9B15 /* Cities */;
-			targetProxy = DD8A368B2CEDC7A400CA9B15 /* PBXContainerItemProxy */;
+			target = DD92474B2D5C184F003F0791 /* list_of_cities */;
+			targetProxy = DD92475E2D5C1851003F0791 /* PBXContainerItemProxy */;
 		};
-		DD8A36962CEDC7A400CA9B15 /* PBXTargetDependency */ = {
+		DD9247692D5C1851003F0791 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DD8A36792CEDC7A200CA9B15 /* Cities */;
-			targetProxy = DD8A36952CEDC7A400CA9B15 /* PBXContainerItemProxy */;
+			target = DD92474B2D5C184F003F0791 /* list_of_cities */;
+			targetProxy = DD9247682D5C1851003F0791 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		DD8A369C2CEDC7A400CA9B15 /* Debug */ = {
+		DD92476F2D5C1851003F0791 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -321,18 +312,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		DD8A369D2CEDC7A400CA9B15 /* Release */ = {
+		DD9247702D5C1851003F0791 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -378,75 +367,92 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		DD8A369F2CEDC7A400CA9B15 /* Debug */ = {
+		DD9247722D5C1851003F0791 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = list_of_cities/list_of_cities.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Cities/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"list_of_cities/Preview Content\"";
 				DEVELOPMENT_TEAM = 8N4L68RSBL;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PabloAleBenzo.Cities;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pabloabenzo.list-of-cities";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
-		DD8A36A02CEDC7A400CA9B15 /* Release */ = {
+		DD9247732D5C1851003F0791 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = list_of_cities/list_of_cities.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Cities/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"list_of_cities/Preview Content\"";
 				DEVELOPMENT_TEAM = 8N4L68RSBL;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PabloAleBenzo.Cities;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pabloabenzo.list-of-cities";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
-		DD8A36A22CEDC7A400CA9B15 /* Debug */ = {
+		DD9247752D5C1851003F0791 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -454,18 +460,22 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8N4L68RSBL;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PabloBenzo.CitiesTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pabloabenzo.list-of-citiesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cities.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cities";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/list_of_cities.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/list_of_cities";
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
-		DD8A36A32CEDC7A400CA9B15 /* Release */ = {
+		DD9247762D5C1851003F0791 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -473,91 +483,105 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8N4L68RSBL;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PabloBenzo.CitiesTests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pabloabenzo.list-of-citiesTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cities.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Cities";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/list_of_cities.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/list_of_cities";
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
-		DD8A36A52CEDC7A400CA9B15 /* Debug */ = {
+		DD9247782D5C1851003F0791 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8N4L68RSBL;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PabloBenzo.CitiesUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pabloabenzo.list-of-citiesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Cities;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = list_of_cities;
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Debug;
 		};
-		DD8A36A62CEDC7A400CA9B15 /* Release */ = {
+		DD9247792D5C1851003F0791 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8N4L68RSBL;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.PabloBenzo.CitiesUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.pabloabenzo.list-of-citiesUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Cities;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = list_of_cities;
+				XROS_DEPLOYMENT_TARGET = 2.2;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DD8A36752CEDC7A200CA9B15 /* Build configuration list for PBXProject "Cities" */ = {
+		DD9247472D5C184F003F0791 /* Build configuration list for PBXProject "list_of_cities" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DD8A369C2CEDC7A400CA9B15 /* Debug */,
-				DD8A369D2CEDC7A400CA9B15 /* Release */,
+				DD92476F2D5C1851003F0791 /* Debug */,
+				DD9247702D5C1851003F0791 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD8A369E2CEDC7A400CA9B15 /* Build configuration list for PBXNativeTarget "Cities" */ = {
+		DD9247712D5C1851003F0791 /* Build configuration list for PBXNativeTarget "list_of_cities" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DD8A369F2CEDC7A400CA9B15 /* Debug */,
-				DD8A36A02CEDC7A400CA9B15 /* Release */,
+				DD9247722D5C1851003F0791 /* Debug */,
+				DD9247732D5C1851003F0791 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD8A36A12CEDC7A400CA9B15 /* Build configuration list for PBXNativeTarget "CitiesTests" */ = {
+		DD9247742D5C1851003F0791 /* Build configuration list for PBXNativeTarget "list_of_citiesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DD8A36A22CEDC7A400CA9B15 /* Debug */,
-				DD8A36A32CEDC7A400CA9B15 /* Release */,
+				DD9247752D5C1851003F0791 /* Debug */,
+				DD9247762D5C1851003F0791 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD8A36A42CEDC7A400CA9B15 /* Build configuration list for PBXNativeTarget "CitiesUITests" */ = {
+		DD9247772D5C1851003F0791 /* Build configuration list for PBXNativeTarget "list_of_citiesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DD8A36A52CEDC7A400CA9B15 /* Debug */,
-				DD8A36A62CEDC7A400CA9B15 /* Release */,
+				DD9247782D5C1851003F0791 /* Debug */,
+				DD9247792D5C1851003F0791 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = DD8A36722CEDC7A200CA9B15 /* Project object */;
+	rootObject = DD9247442D5C184F003F0791 /* Project object */;
 }

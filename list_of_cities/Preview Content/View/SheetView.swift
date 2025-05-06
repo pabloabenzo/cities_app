@@ -1,19 +1,22 @@
 //
-//  InfoSheetView.swift
-//  Cities
+//  SheetView.swift
+//  list_of_cities
 //
-//  Created by Pablo Benzo on 20/11/2024.
+//  Created by Pablo Benzo on 11/02/2025.
 //
+
+import Foundation
 
 import SwiftUI
 
-struct InfoSheetView: View {
+struct SheetView: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         NavigationView {
             VStack {
-                Text("Here you'll find information about the selected city as soon as it's added to the received JSON.")
+                Text("Here you will find information about the selected city as soon as it is added to the received JSON.")
                     .padding()
                 
             }
@@ -24,15 +27,11 @@ struct InfoSheetView: View {
                     }) {
                         HStack {
                             Image(systemName: "x.circle")
-                                .tint(.black)
+                                .tint(colorScheme == .dark ? .white : .black)
                         }
                     }
                 }
             }
         }
     }
-}
-
-#Preview {
-    InfoSheetView()
 }

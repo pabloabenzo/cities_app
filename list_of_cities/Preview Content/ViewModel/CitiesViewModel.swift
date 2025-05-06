@@ -1,36 +1,38 @@
 //
-//  ListOfCitiesViewModel.swift
-//  Cities
+//  CitiesViewModel.swift
+//  list_of_cities
 //
-//  Created by Pablo Benzo on 20/11/2024.
+//  Created by Pablo Benzo on 11/02/2025.
 //
 
 import Foundation
 import SwiftUI
 import Observation
 
-@Observable
-class ListOfCitiesViewModel {
+class CitiesViewModel: ObservableObject, Sendable {
     
-    var initialCitiesLoaded: [CitiesInfo] = []
-    private var showingFavs = false
-    private var savedItems: Set<Int> = [1, 7]
-    var listResults = [CitiesInfo]()
+    @Published var initialCitiesLoaded: [CitiesInfo] = []
+    @Published private var showingFavs = false
+    @Published private var savedItems: Set<Int> = [1, 7]
+    @Published var listResults = [CitiesInfo]()
+    @Published var defaultCity: CitiesInfo?
+    @Published var selectedCity: CitiesInfo?
     
     let url = URL(string: "https://gist.githubusercontent.com/hernan-uala/dce8843a8edbe0b0018b32e137bc2b3a/raw/0996accf70cb0ca0e16f9a99e0ee185fafca7af1/cities.json")
     
     func fetchData(from url: URL, completion: ((Result<Data, any Error>) -> Void)? = nil) async {
-        
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             
             if let decodedResponse = try? JSONDecoder().decode([CitiesInfo].self, from: data) {
                 let results = decodedResponse
-                listResults = results.sorted { $0.name < $1.name }
                 
+                DispatchQueue.main.async {
+                    self.listResults = results.sorted { $0.name < $1.name }
+                }
             }
         } catch {
-            print("Invalid data.")
+            print("data inválida")
         }
     }
     
@@ -44,7 +46,7 @@ class ListOfCitiesViewModel {
         return Set(array)
     }
     
-    // Filter saved items
+    // Saved items filter.
     var filteredItems: [CitiesInfo]  {
         if showingFavs {
             return initialCitiesLoaded.filter { savedItems.contains($0._id) }

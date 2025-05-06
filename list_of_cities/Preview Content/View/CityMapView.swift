@@ -1,9 +1,11 @@
 //
 //  CityMapView.swift
-//  Cities
+//  list_of_cities
 //
-//  Created by Pablo Benzo on 20/11/2024.
+//  Created by Pablo Benzo on 11/02/2025.
 //
+
+import Foundation
 
 import SwiftUI
 import MapKit
@@ -11,6 +13,7 @@ import MapKit
 struct CityMapView: View {
     let listResult: CitiesInfo
     @Environment(\.dismiss) var dismiss
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         VStack {
@@ -24,10 +27,10 @@ struct CityMapView: View {
                 }) {
                     HStack {
                         Image(systemName: "chevron.left")
-                            .tint(.black)
+                            .tint(colorScheme == .dark ? .white : .black)
                         Text("Back")
                             .fontWeight(.semibold)
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                     }
                 }
             }

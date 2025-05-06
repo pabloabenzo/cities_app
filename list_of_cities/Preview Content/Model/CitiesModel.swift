@@ -1,8 +1,8 @@
 //
-//  ListOfCitiesModel.swift
-//  Cities
+//  CitiesModel.swift
+//  list_of_cities
 //
-//  Created by Pablo Benzo on 20/11/2024.
+//  Created by Pablo Benzo on 11/02/2025.
 //
 
 import Foundation

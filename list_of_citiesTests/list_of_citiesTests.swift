@@ -1,12 +1,12 @@
 //
-//  CitiesTests.swift
-//  CitiesTests
+//  list_of_citiesTests.swift
+//  list_of_citiesTests
 //
-//  Created by Pablo Benzo on 21/11/2024.
+//  Created by Pablo Benzo on 11/02/2025.
 //
 
 import XCTest
-@testable import Cities
+@testable import list_of_cities
 
 protocol NetworkingService {
     func fetchData(url: URL, completion: @escaping (Data?, Error?) -> Void)
@@ -28,7 +28,7 @@ final class CitiesTests: XCTestCase {
     }
     
     func testFetchCitiesData() {
-        let expectation = self.expectation(description: "Fetch cities data.")
+        let expectation = self.expectation(description: "Fetch cities data")
         apiClient.fetchCitiesData { result in
             switch result {
             case .success(let cities):
@@ -96,5 +96,3 @@ final class CitiesTests: XCTestCase {
     }
     
 }
-    
-
