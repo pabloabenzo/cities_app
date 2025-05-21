@@ -9,14 +9,15 @@ import Foundation
 import SwiftUI
 import Observation
 
+@Observable
 class CitiesViewModel: ObservableObject, Sendable {
     
-    @Published var initialCitiesLoaded: [CitiesInfo] = []
-    @Published private var showingFavs = false
-    @Published private var savedItems: Set<Int> = [1, 7]
-    @Published var listResults = [CitiesInfo]()
-    @Published var defaultCity: CitiesInfo?
-    @Published var selectedCity: CitiesInfo?
+    var initialCitiesLoaded: [CitiesInfo] = []
+    private var showingFavs = false
+    private var savedItems: Set<Int> = [1, 7]
+    var listResults = [CitiesInfo]()
+    var defaultCity: CitiesInfo?
+    var selectedCity: CitiesInfo?
     
     let url = URL(string: "https://gist.githubusercontent.com/hernan-uala/dce8843a8edbe0b0018b32e137bc2b3a/raw/0996accf70cb0ca0e16f9a99e0ee185fafca7af1/cities.json")
     
