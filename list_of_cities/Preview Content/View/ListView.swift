@@ -22,7 +22,7 @@ struct ListView: View {
             ScrollView {
                 LazyVStack(alignment: .leading) {
                     ForEach(filteredSearch, id: \.name) { city in
-                        HStack() {
+                        HStack(alignment: .center) {
                             if isLandscape {
                                 VStack(alignment: .leading) {
                                     Text("\(city.name), \(city.country)")
@@ -32,7 +32,6 @@ struct ListView: View {
                                     Text("Lon: \(city.coord.lon), Lat: \(city.coord.lat)")
                                         .tint(Color.indigo)
                                 }
-                                .padding(.leading, 10)
                                 .onTapGesture {
                                     citiesVM.selectedCity = city
                                 }
@@ -46,12 +45,11 @@ struct ListView: View {
                                         Text("Lon: \(city.coord.lon), Lat: \(city.coord.lat)")
                                             .tint(Color.indigo)
                                     }
-                                    .padding(.leading, 10)
                                 }
                             }
                             Spacer()
-                                .frame(maxWidth: 30, alignment: .trailing)
                             
+                            HStack() {
                                 Button {
                                     isSheetViewPresented = true
                                 } label: {
@@ -60,15 +58,16 @@ struct ListView: View {
                                         .tint(Color.purple)
                                         .frame(width: 25, height: 25)
                                 }
+                                .padding(.trailing, 30)
                                 
-                                Spacer()
-                                    .frame(maxWidth: 30, alignment: .trailing)
                                 Image(systemName: citiesVM.contains(city) ? "heart.fill" : "heart")
                                     .foregroundColor(.red)
                                     .onTapGesture {
                                         citiesVM.toggleFav(item: city)
                                     }
+                            }
                         }
+                        .padding(.horizontal, 10)
                         .frame(minWidth: deviceWidth / 1.5)
                         .onAppear {
                             loadMoreContentIfNeeded(city: city)
