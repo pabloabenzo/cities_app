@@ -113,33 +113,17 @@ struct ListView: View {
             return
         }
         
-        let shown = Set(presenter.model.filteredCities)
-        var candidates: [CityModel] = []
-        
-        for c in presenter.model.allCities {
-            if shown.contains(c) {
-                continue
-            }
-            if presenter.model.showingFavorites && !presenter.model.favoriteCityIds.contains(c.id) {
-                continue
-            }
-            if !presenter.model.searchText.isEmpty && !c.name.lowercased().hasPrefix(presenter.model.searchText.lowercased()) {
-                continue
-            }
-            candidates.append(c)
-            if candidates.count >= 20 {
-                break
-            }
-        }
-        
-        if candidates.isEmpty {
+        let currentCount = presenter.model.filteredCities.count
+        guard currentCount < presenter.model.fullFilteredCities.count else {
             return
         }
         
         isLoadingMore = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            presenter.model.filteredCities.append(contentsOf: candidates)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            let nextCount = min(currentCount + presenter.model.loadMoreSize, presenter.model.fullFilteredCities.count)
+            let nextBatch = Array(presenter.model.fullFilteredCities[currentCount..<nextCount])
+            presenter.model.filteredCities.append(contentsOf: nextBatch)
             isLoadingMore = false
         }
     }

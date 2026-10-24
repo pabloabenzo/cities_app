@@ -78,17 +78,21 @@ class CitiesPresenter {
     }
     
     private func applyFilters() {
+        var result: [CityModel] = []
         if model.showingFavorites {
-            model.filteredCities = model.allCities.filter { model.favoriteCityIds.contains($0.id) }
+            result = model.allCities.filter { model.favoriteCityIds.contains($0.id) }
         } else {
-            model.filteredCities = model.allCities
+            result = model.allCities
         }
         
         if !model.searchText.isEmpty {
-            model.filteredCities = model.filteredCities.filter {
+            result = result.filter {
                 $0.name.lowercased().hasPrefix(model.searchText.lowercased())
             }
         }
+        
+        model.fullFilteredCities = result
+        model.filteredCities = Array(result.prefix(model.initialPageSize))
     }
     
     private func loadFavorites() -> Set<Int> {
