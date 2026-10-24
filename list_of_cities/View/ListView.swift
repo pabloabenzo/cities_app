@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ListView: View {
-    var presenter: CitiesPresenter
+    @Bindable var presenter: CitiesPresenter
     @EnvironmentObject private var router: AppRouter
     
     @State private var searchBar: String = ""
@@ -14,19 +14,22 @@ struct ListView: View {
                 LazyVStack(alignment: .leading) {
                     ForEach(presenter.model.filteredCities, id: \.self) { city in
                         HStack(alignment: .center) {
-                            VStack(alignment: .leading) {
-                                Text("\(city.name), \(city.country)")
-                                    .foregroundStyle(.primary)
-                                    .bold()
-                                    .tint(Color.indigo)
-                                Text("Lon: \(city.longitude), Lat: \(city.latitude)")
-                                    .tint(Color.indigo)
+                            NavigationLink(destination: CityMapView(city: city)) {
+                                VStack(alignment: .leading) {
+                                    Text("\(city.name), \(city.country)")
+                                        .foregroundStyle(.primary)
+                                        .bold()
+                                        .tint(Color.indigo)
+                                    Text("Lon: \(city.longitude), Lat: \(city.latitude)")
+                                        .tint(Color.indigo)
+                                }
                             }
-                            .onTapGesture {
+                            .simultaneousGesture(TapGesture().onEnded {
                                 Task {
                                     await presenter.action(.selectCity(city))
                                 }
-                            }
+                            })
+                            .buttonStyle(.plain)
                             
                             Spacer()
                             
@@ -40,14 +43,17 @@ struct ListView: View {
                                         .frame(width: 25, height: 25)
                                 }
                                 .padding(.trailing, 30)
+                                .buttonStyle(.plain)
                                 
-                                Image(systemName: presenter.isFavorite(city) ? "heart.fill" : "heart")
-                                    .foregroundColor(.red)
-                                    .onTapGesture {
-                                        Task {
-                                            await presenter.action(.toggleFavorite(city))
-                                        }
+                                Button {
+                                    Task {
+                                        await presenter.action(.toggleFavorite(city))
                                     }
+                                } label: {
+                                    Image(systemName: presenter.isFavorite(city) ? "heart.fill" : "heart")
+                                        .foregroundColor(.red)
+                                }
+                                .buttonStyle(.plain)
                             }
                         }
                         .padding(.horizontal, 10)
@@ -63,6 +69,9 @@ struct ListView: View {
                     .padding(.bottom, 30)
                     .padding(.leading, 10)
                 }
+            }
+            .navigationDestination(for: CityModel.self) { city in
+                CityMapView(city: city)
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -100,18 +109,38 @@ struct ListView: View {
             return
         }
         
-        if !isLoadingMore && presenter.model.filteredCities.count < presenter.model.allCities.count {
-            isLoadingMore = true
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                let currentCount = presenter.model.filteredCities.count
-                let allCount = presenter.model.allCities.count
-                var updated = presenter.model.filteredCities
-                let nextBatch = Array(presenter.model.allCities[currentCount..<min(currentCount + 20, allCount)])
-                updated.append(contentsOf: nextBatch)
-                presenter.model.filteredCities = updated
-                isLoadingMore = false
+        if isLoadingMore {
+            return
+        }
+        
+        let shown = Set(presenter.model.filteredCities)
+        var candidates: [CityModel] = []
+        
+        for c in presenter.model.allCities {
+            if shown.contains(c) {
+                continue
             }
+            if presenter.model.showingFavorites && !presenter.model.favoriteCityIds.contains(c.id) {
+                continue
+            }
+            if !presenter.model.searchText.isEmpty && !c.name.lowercased().hasPrefix(presenter.model.searchText.lowercased()) {
+                continue
+            }
+            candidates.append(c)
+            if candidates.count >= 20 {
+                break
+            }
+        }
+        
+        if candidates.isEmpty {
+            return
+        }
+        
+        isLoadingMore = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            presenter.model.filteredCities.append(contentsOf: candidates)
+            isLoadingMore = false
         }
     }
 }
