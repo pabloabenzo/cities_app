@@ -1,98 +1,112 @@
-//
-//  list_of_citiesTests.swift
-//  list_of_citiesTests
-//
-//  Created by Pablo Benzo on 11/02/2025.
-//
-
-import XCTest
+import Testing
 @testable import list_of_cities
 
-protocol NetworkingService {
-    func fetchData(url: URL, completion: @escaping (Data?, Error?) -> Void)
-}
-
-final class CitiesTests: XCTestCase {
+@Suite("Cities Tests")
+struct CitiesTests {
     
-    var apiClient: CitiesAPIClient!
-    
-    override func setUp() {
-        super.setUp()
-
-        let mockNetworkingService = MockNetworkingService()
-        apiClient = CitiesAPIClient(networkingService: mockNetworkingService)
+    @Test("Map DTO to CityModel")
+    func mapDTOToCityModel() throws {
+        let dto = CitiesDTO(
+            country: "UA",
+            name: "Hurzuf",
+            _id: 707860,
+            coord: CitiesDTO.CoordDTO(lon: 34.283333, lat: 44.549999)
+        )
+        
+        let model = CityModel(
+            id: dto._id,
+            name: dto.name,
+            country: dto.country,
+            latitude: dto.coord.lat,
+            longitude: dto.coord.lon
+        )
+        
+        #expect(model.id == 707860)
+        #expect(model.name == "Hurzuf")
+        #expect(model.country == "UA")
+        #expect(model.latitude == 44.549999)
+        #expect(model.longitude == 34.283333)
     }
-    override func tearDown() {
-        apiClient = nil
-        super.tearDown()
-    }
     
-    func testFetchCitiesData() {
-        let expectation = self.expectation(description: "Fetch cities data")
-        apiClient.fetchCitiesData { result in
-            switch result {
-            case .success(let cities):
-                XCTAssertFalse(cities.isEmpty, "The result should not be empty.")
-                
-                if let firstCity = cities.first {
-                    XCTAssertEqual(firstCity.country, "UA")
-                    XCTAssertEqual(firstCity.name, "Hurzuf")
-                } else {
-                    XCTFail("The array is empty.")
-                }
-            case .failure(let error):
-                XCTFail("Error: \(error.localizedDescription)")
+    @Test("Decode cities DTO array")
+    func decodeCitiesDTOArray() throws {
+        let jsonString = """
+        [
+            {
+                "country":"UA",
+                "name":"Hurzuf",
+                "_id":707860,
+                "coord":{"lon":34.283333,"lat":44.549999}
             }
-            expectation.fulfill()
-        }
-        wait(for: [expectation], timeout: 5.0)
+        ]
+        """
+        let data = try #require(jsonString.data(using: .utf8))
+        let dtos = try JSONDecoder().decode([CitiesDTO].self, from: data)
+        #expect(dtos.count == 1)
+        #expect(dtos.first?.name == "Hurzuf")
+        #expect(dtos.first?._id == 707860)
     }
     
-    class MockNetworkingService: NetworkingService {
-        func fetchData(url: URL, completion: @escaping (Data?, Error?) -> Void) {
-
-            let jsonString = """
-               [
-                {
-                    "country":"UA",
-                    "name":"Hurzuf",
-                    "_id":707860,
-                    "coord":{"lon":34.283333,"lat":44.549999}
-                }
-               ]
-            """
-            if let data = jsonString.data(using: .utf8) {
-                completion(data, nil)
-            } else {
-                let error = NSError(domain: "MockNetworkingServiceErrorDomain", code: -1, userInfo: nil)
-                completion(nil, error)
-            }
-        }
+    @MainActor
+    @Test("Toggle favorite updates model and filtering")
+    func toggleFavoriteUpdatesModel() async {
+        let presenter = CitiesPresenter()
+        let city = CityModel(id: 123, name: "TestCity", country: "TC", latitude: 0, longitude: 0)
+        presenter.model.allCities = [city]
+        presenter.model.filteredCities = [city]
+        
+        #expect(presenter.isFavorite(city) == false)
+        await presenter.action(.toggleFavorite(city))
+        #expect(presenter.isFavorite(city) == true)
+        await presenter.action(.toggleFavorite(city))
+        #expect(presenter.isFavorite(city) == false)
     }
     
-    class CitiesAPIClient {
-        private let networkingService: NetworkingService
-
-    init(networkingService: NetworkingService) {
-            self.networkingService = networkingService
-        }
-        func fetchCitiesData(completion: @escaping (Result<[CitiesInfo], Error>) -> Void) {
-            guard let url = URL(string: "https://gist.githubusercontent.com/hernan-uala/dce8843a8edbe0b0018b32e137bc2b3a/raw/0996accf70cb0ca0e16f9a99e0ee185fafca7af1/cities.json") else { return }
-            networkingService.fetchData(url: url) { data, error in
-                if let error = error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                let decoder = JSONDecoder()
-                do {
-                    let news = try decoder.decode([CitiesInfo].self, from: data!)
-                    completion(.success(news))
-                } catch {
-                    completion(.failure(error))
-                }
-            }
-        }
+    @MainActor
+    @Test("Toggle favorites filter shows only favorites")
+    func toggleFavoritesFilter() async {
+        let presenter = CitiesPresenter()
+        let favCity = CityModel(id: 1, name: "Fav", country: "F", latitude: 0, longitude: 0)
+        let otherCity = CityModel(id: 2, name: "Other", country: "O", latitude: 0, longitude: 0)
+        presenter.model.allCities = [favCity, otherCity]
+        presenter.model.favoriteCityIds = [1]
+        presenter.model.filteredCities = [favCity, otherCity]
+        
+        await presenter.action(.toggleFavoritesFilter)
+        #expect(presenter.model.showingFavorites == true)
+        #expect(presenter.model.filteredCities.count == 1)
+        #expect(presenter.model.filteredCities.first?.id == 1)
+        
+        await presenter.action(.toggleFavoritesFilter)
+        #expect(presenter.model.showingFavorites == false)
+        #expect(presenter.model.filteredCities.count == 2)
     }
     
+    @MainActor
+    @Test("Search filters by prefix")
+    func searchFiltersByPrefix() async {
+        let presenter = CitiesPresenter()
+        let hurzuf = CityModel(id: 1, name: "Hurzuf", country: "UA", latitude: 0, longitude: 0)
+        let madrid = CityModel(id: 2, name: "Madrid", country: "ES", latitude: 0, longitude: 0)
+        presenter.model.allCities = [hurzuf, madrid]
+        presenter.model.filteredCities = [hurzuf, madrid]
+        
+        await presenter.action(.search("Hur"))
+        #expect(presenter.model.filteredCities.count == 1)
+        #expect(presenter.model.filteredCities.first?.name == "Hurzuf")
+        
+        await presenter.action(.search(""))
+        #expect(presenter.model.filteredCities.count == 2)
+    }
+    
+    @MainActor
+    @Test("Select city updates model")
+    func selectCityUpdatesModel() async {
+        let presenter = CitiesPresenter()
+        let city = CityModel(id: 10, name: "Test", country: "T", latitude: 1, longitude: 2)
+        await presenter.action(.selectCity(city))
+        #expect(presenter.model.selectedCity?.id == 10)
+        await presenter.action(.selectCity(nil))
+        #expect(presenter.model.selectedCity == nil)
+    }
 }
