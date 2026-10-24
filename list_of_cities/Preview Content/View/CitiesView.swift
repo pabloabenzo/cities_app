@@ -1,36 +1,32 @@
-//
-//  CitiesView.swift
-//  list_of_cities
-//
-//  Created by Pablo Benzo on 11/02/2025.
-//
-
 import SwiftUI
 
 struct CitiesView: View {
-    
-    @StateObject var citiesVM = CitiesViewModel()
+    @State private var presenter = CitiesPresenter()
+    @StateObject private var router = AppRouter()
     
     var body: some View {
         GeometryReader { geometry in
             let isLandscape = geometry.size.width > geometry.size.height
             
             if !isLandscape {
-                ListView(citiesVM: citiesVM)
+                ListView(presenter: presenter)
+                    .environmentObject(router)
             } else {
                 HStack {
-                    ListView(citiesVM: citiesVM)
+                    ListView(presenter: presenter)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .environmentObject(router)
                     
-                    if let city = citiesVM.selectedCity {
-                        CityMapView(listResult: city)
-                    } else if citiesVM.defaultCity != nil {
-                        CityMapView(listResult: citiesVM.defaultCity!)
+                    if let city = presenter.model.selectedCity {
+                        CityMapView(city: city)
+                    } else if let city = presenter.model.defaultCity {
+                        CityMapView(city: city)
                     }
-                    
                 }
             }
         }
+        .task {
+            await presenter.action(.loadCities)
+        }
     }
-    
 }

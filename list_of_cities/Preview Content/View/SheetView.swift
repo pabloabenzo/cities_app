@@ -1,30 +1,20 @@
-//
-//  SheetView.swift
-//  list_of_cities
-//
-//  Created by Pablo Benzo on 11/02/2025.
-//
-
-import Foundation
-
 import SwiftUI
 
 struct SheetView: View {
-    @Environment(\.dismiss) var dismiss
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Text("Here you will find information about the selected city as soon as it is added to the received JSON.")
                     .padding()
-                
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
+                    Button {
                         dismiss()
-                    }) {
+                    } label: {
                         HStack {
                             Image(systemName: "x.circle")
                                 .tint(colorScheme == .dark ? .white : .black)
