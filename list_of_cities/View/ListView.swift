@@ -3,6 +3,7 @@ import SwiftUI
 struct ListView: View {
     @Bindable var presenter: CitiesPresenter
     @EnvironmentObject private var router: AppRouter
+    var allowsNavigation: Bool = true
     
     @State private var searchBar: String = ""
     @State private var isSheetViewPresented: Bool = false
@@ -14,7 +15,24 @@ struct ListView: View {
                 LazyVStack(alignment: .leading) {
                     ForEach(presenter.model.filteredCities, id: \.self) { city in
                         HStack(alignment: .center) {
-                            NavigationLink(destination: CityMapView(city: city)) {
+                            if allowsNavigation {
+                                NavigationLink(destination: CityMapView(city: city)) {
+                                    VStack(alignment: .leading) {
+                                        Text("\(city.name), \(city.country)")
+                                            .foregroundStyle(.primary)
+                                            .bold()
+                                            .tint(Color.indigo)
+                                        Text("Lon: \(city.longitude), Lat: \(city.latitude)")
+                                            .tint(Color.indigo)
+                                    }
+                                }
+                                .simultaneousGesture(TapGesture().onEnded {
+                                    Task {
+                                        await presenter.action(.selectCity(city))
+                                    }
+                                })
+                                .buttonStyle(.plain)
+                            } else {
                                 VStack(alignment: .leading) {
                                     Text("\(city.name), \(city.country)")
                                         .foregroundStyle(.primary)
@@ -23,13 +41,12 @@ struct ListView: View {
                                     Text("Lon: \(city.longitude), Lat: \(city.latitude)")
                                         .tint(Color.indigo)
                                 }
-                            }
-                            .simultaneousGesture(TapGesture().onEnded {
-                                Task {
-                                    await presenter.action(.selectCity(city))
+                                .onTapGesture {
+                                    Task {
+                                        await presenter.action(.selectCity(city))
+                                    }
                                 }
-                            })
-                            .buttonStyle(.plain)
+                            }
                             
                             Spacer()
                             
@@ -71,7 +88,9 @@ struct ListView: View {
                 }
             }
             .navigationDestination(for: CityModel.self) { city in
-                CityMapView(city: city)
+                if allowsNavigation {
+                    CityMapView(city: city)
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

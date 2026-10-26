@@ -9,11 +9,11 @@ struct CitiesView: View {
             let isLandscape = geometry.size.width > geometry.size.height
             
             if !isLandscape {
-                ListView(presenter: presenter)
+                ListView(presenter: presenter, allowsNavigation: true)
                     .environmentObject(router)
             } else {
                 HStack {
-                    ListView(presenter: presenter)
+                    ListView(presenter: presenter, allowsNavigation: false)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                         .environmentObject(router)
                     
