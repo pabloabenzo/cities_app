@@ -7,11 +7,11 @@ class CitiesPresenter {
     var model = CitiesListModel()
     
     private let service = CitiesService.shared
-    private let favoritesKey = "fav_key"
+    private let storage = FavoritesStorage()
     private let citiesURL = URL(string: "https://gist.githubusercontent.com/hernan-uala/dce8843a8edbe0b0018b32e137bc2b3a/raw/0996accf70cb0ca0e16f9a99e0ee185fafca7af1/cities.json")
     
     init() {
-        model.favoriteCityIds = loadFavorites()
+        model.favoriteCityIds = storage.fetchFavoriteIds()
     }
     
     enum Action {
@@ -61,10 +61,11 @@ class CitiesPresenter {
     private func toggleFavorite(_ city: CityModel) {
         if model.favoriteCityIds.contains(city.id) {
             model.favoriteCityIds.remove(city.id)
+            storage.removeFavorite(cityId: city.id)
         } else {
             model.favoriteCityIds.insert(city.id)
+            storage.addFavorite(city: city)
         }
-        saveFavorites()
         applyFilters()
     }
     
@@ -96,12 +97,6 @@ class CitiesPresenter {
     }
     
     private func loadFavorites() -> Set<Int> {
-        let array = UserDefaults.standard.array(forKey: favoritesKey) as? [Int] ?? [Int]()
-        return Set(array)
-    }
-    
-    private func saveFavorites() {
-        let array = Array(model.favoriteCityIds)
-        UserDefaults.standard.set(array, forKey: favoritesKey)
+        storage.fetchFavoriteIds()
     }
 }

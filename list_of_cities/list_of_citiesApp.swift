@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct list_of_citiesApp: App {
@@ -13,5 +14,6 @@ struct list_of_citiesApp: App {
         WindowGroup {
             CitiesView()
         }
+        .modelContainer(for: FavoriteCity.self)
     }
 }
